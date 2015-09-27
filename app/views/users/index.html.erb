@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listado Usuarios</h1>
+<%= will_paginate %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= image_tag(user.picture, size:'40x40') %></td> 
+        <td><%= user.first_name %></td>
+        <td><%= user.email %></td>
+        <td class="col-md-4 btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default"><%= link_to 'Show', user %></button>
+                <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_user_path(user) %></button>
+                <button type="button" class="btn btn-default"><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</br>
+<%= will_paginate %>

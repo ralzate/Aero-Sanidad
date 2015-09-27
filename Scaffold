@@ -1,0 +1,16 @@
+rails generate scaffold eps name:string
+
+rails generate scaffold arl name:string
+
+rails generate scaffold country name:string
+
+rails generate scaffold department name:string country:references
+
+rails generate scaffold city name:string department:references
+
+rails generate scaffold rol name:string restrictions:string
+
+rails generate scaffold user first_name:string second_name:string first_surname:string second_surname:string
+email:string password:string type_document:string document:string medical_record:string rol:references
+
+rails generate scaffold patient first_name:string second_name:string first_surname:string second_surname:string email:string type_document:string document:string days_age:integer months_age:integer years_age:integer birthdate:date gender:integer profession:string blood_type:integer nacionality:string eps:references arl:references address:string condition:integer accompanist_name:string relationship:integer phone:string city:references user:references
