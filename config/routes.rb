@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :patients, :path => "pascientes"
   resources :roles , :path => "roles"
   resources :cities , :path => "ciudades"
   resources :departments, :path => "departamentos"

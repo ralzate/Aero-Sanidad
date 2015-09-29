@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925163706) do
+ActiveRecord::Schema.define(version: 20150927205136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,40 @@ ActiveRecord::Schema.define(version: 20150925163706) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
+  create_table "patients", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "second_name"
+    t.string   "first_surname"
+    t.string   "second_surname"
+    t.string   "email"
+    t.string   "type_document"
+    t.string   "document"
+    t.integer  "days_age"
+    t.integer  "months_age"
+    t.integer  "years_age"
+    t.date     "birthdate"
+    t.integer  "gender"
+    t.string   "profession"
+    t.integer  "blood_type"
+    t.string   "nacionality"
+    t.integer  "eps_id"
+    t.integer  "arl_id"
+    t.string   "address"
+    t.integer  "condition"
+    t.string   "accompanist_name"
+    t.integer  "relationship"
+    t.string   "phone"
+    t.integer  "city_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "patients", ["arl_id"], name: "index_patients_on_arl_id", using: :btree
+  add_index "patients", ["city_id"], name: "index_patients_on_city_id", using: :btree
+  add_index "patients", ["eps_id"], name: "index_patients_on_eps_id", using: :btree
+  add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -185,5 +219,9 @@ ActiveRecord::Schema.define(version: 20150925163706) do
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "patients", "arles"
+  add_foreign_key "patients", "cities"
+  add_foreign_key "patients", "epses"
+  add_foreign_key "patients", "users"
   add_foreign_key "products", "users"
 end

@@ -1,1 +1,70 @@
+
+
+
+
+
+
+<div class="container">
+
 <h1>Bienvenido a AeroSanidad! </h1>
+
+
+	<div class="row">
+        <div class="col-lg-12">
+			<%= form_tag request.path, :method => 'get' do %>
+			<%= text_field_tag :search, params[:search], :placeholder => "Busca pasciente Pasciente", :class => 'form-control' %>
+
+			<% end %>
+        </div>
+	</div>
+
+    <% @patients.each do |patient| %>
+	<div class="row">
+        <div class="searchable-container">
+            <div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
+               <div class="info-block block-info clearfix">
+                    <div class="square-box pull-left">
+                        <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                    </div>
+                    <h3>Nombres: <%= patient.first_name %> <%= patient.second_name %></h3>
+                    <h4>Apellidos: <%= patient.first_name %> <%= patient.second_name %></h4>
+                    <h5>Documento: <%= patient.document %></h5>
+                    <span>Telefono: <%= patient.phone %></span>
+                    <span>Condition: <%= patient.condition %></span>
+                    <span>Eps: <%= patient.eps %></span>
+                    <span>Arl: <%= patient.arl %></span>
+                </div>
+            </div>
+
+        </div>
+	</div>
+	<% end %>
+</div>
+
+<style type="text/css">
+	.glyphicon-lg
+{
+    font-size:4em;
+}
+.info-block
+{
+    border-right:5px solid #E6E6E6;margin-bottom:25px;
+}
+.info-block .square-box
+{
+    width:100px;min-height:110px;margin-right:22px;text-align:center!important;background-color:#676767;padding:20px 0;
+}
+.info-block.block-info
+{
+    border-color:#20819e;
+}
+.info-block.block-info .square-box
+{
+    background-color:#20819e;
+    color:#FFF;
+}
+</style>
+
+<script type="text/javascript">
+	
+</script>

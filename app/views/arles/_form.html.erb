@@ -22,6 +22,7 @@
     </div>
     <%= error_span(@arl[:name]) %>
   </div>
+<%= select_tag :state, options_for_select(us_states) %>
 
 
   <%= f.submit nil, :class => 'btn btn-primary' %>

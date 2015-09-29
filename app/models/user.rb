@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
   validate :picture_size
 
 
+    # Metodo para buscar
+  def self.search(search)
+    where("first_name like '%#{search}%'")
+  end
+
   class << self
     def current_users
       where("#{sorcery_config.last_activity_at_attribute_name} IS NOT NULL") \

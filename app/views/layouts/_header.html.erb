@@ -1,6 +1,7 @@
 <nav class="navbar navbar-inverse">
       <ul class="nav navbar-nav navbar-right">
           <li class="navbar-header"><%= link_to 'Inicio', root_path, class: 'navbar-brand' %></li>
+          <li><%= link_to 'Pascientes', patients_path %></li>
           <li><%= link_to 'Epses', epses_path %></li>
           <li><%= link_to 'Arles', arles_path %></li>
           <li><%= link_to 'Paises', countries_path %></li>
@@ -27,4 +28,5 @@
           <li><%= link_to 'Log In', login_path %></li>
         <% end %>
       </ul>
+
 </nav>

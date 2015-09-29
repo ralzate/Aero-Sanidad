@@ -27,6 +27,7 @@ gem 'mini_magick'
 gem 'fog'
 gem "chartkick"
 gem 'groupdate'
+gem 'country-select'
 
 gem 'faker'
 gem 'will_paginate'
