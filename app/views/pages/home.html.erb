@@ -41,6 +41,17 @@
 	<% end %>
 </div>
 
+
+<br />
+<br />
+<div align="center">
+  <%= will_paginate @patients, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>
+<div align="center">
+  Total Pascientes : <%= @patients.total_entries %>
+</div>
+
 <style type="text/css">
 	.glyphicon-lg
 {
