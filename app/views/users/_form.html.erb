@@ -1,127 +1,112 @@
 <div class="container">    
-        
     <div id="loginbox" class="mainbox col-md-12 col-md-offset-1 col-sm-12 col-sm-offset-1"> 
-        
-
         <div class="panel panel-default" >
-            <div class="panel-heading">
+            <div class="panel-heading col-md-12">
                 <div class="panel-title text-center">Registrate</div>
             </div>     
-
             <div class="panel-body" >
 
+              <%= form_for(@user, html: { multipart: true }) do |f| %>
+                <%= render 'shared/errors' %>
+
+                  <div class="container">
+                      <div class="login-container">
+                      <div id="output"></div>
+                        <div class="avatar"></div>
+                        <div class="form-box">
 
 
+                          <style type="text/css">
+                          input, input[placeholder]{
+                            font-weight:bold;
+                              color:black;
+                              text-align:center;
 
-<%= form_for(@user, html: { multipart: true }) do |f| %>
-  <%= render 'shared/errors' %>
-
-<div class="container">
-    <div class="login-container">
-    <div id="output"></div>
-      <div class="avatar"></div>
-      <div class="form-box">
-
-
-    <style type="text/css">
-input, input[placeholder]{
-  font-weight:bold;
-    color:black;
-    text-align:center;
-
-}
-    </style>
+                          }
+                          </style>
+                          <br/><br/>
 
 
-    <div class="row">
-      <div class="col-md-6">   
-        <div class="form-group">
-          <%= f.text_field :first_name, class: 'form-control', required: true, placeholder: 'Primer Nombre' %>
-        </div>
-      </div>
-      <div class="col-md-6">   
-        <div class="form-group">
-          <%= f.text_field :second_name, class: 'form-control', required: true, placeholder: 'Segundo Nombre' %>
-        </div>
-      </div>
-    </div>
+                            <div class="row">
+                              <div class="col-md-5">   
+                                <div class="form-group">
+                                  <%= f.text_field :first_name, class: 'form-control', required: true, placeholder: 'Primer Nombre' %>
+                                </div>
+                              </div>
+                              <div class="col-md-5">   
+                                <div class="form-group">
+                                  <%= f.text_field :second_name, class: 'form-control', required: true, placeholder: 'Segundo Nombre' %>
+                                </div>
+                              </div>
+                            </div>
 
-    <div class="row">
-      <div class="col-md-6">   
-        <div class="form-group">
-          <%= f.text_field :first_surname, class: 'form-control', required: true, placeholder: 'Primer Apellido' %>
-        </div>
-      </div>
-      <div class="col-md-6">   
-        <div class="form-group">
-          <%= f.text_field :second_surname, class: 'form-control', required: true, placeholder: 'Segundo Apellido' %>
-        </div>
-      </div>
-    </div>
+                            <div class="row">
+                              <div class="col-md-5">   
+                                <div class="form-group">
+                                  <%= f.text_field :first_surname, class: 'form-control', required: true, placeholder: 'Primer Apellido' %>
+                                </div>
+                              </div>
+                              <div class="col-md-5">   
+                                <div class="form-group">
+                                  <%= f.text_field :second_surname, class: 'form-control', required: true, placeholder: 'Segundo Apellido' %>
+                                </div>
+                              </div>
+                            </div>
 
-    <div class="row">
-      <div class="col-md-6">   
-        <div class="form-group">
-          <%= f.text_field :type_document, class: 'form-control', required: true, placeholder: 'Tipo Documento' %>
-        </div>
-      </div>
-      <div class="col-md-6">   
-        <div class="form-group">
-          <%= f.text_field :medical_record, class: 'form-control', required: true, placeholder: 'Registro Medico' %>
-        </div>
-      </div>
-    </div>
+                            <div class="row">
+                              <div class="col-md-5">   
+                                <div class="form-group">
+                                  <%= f.text_field :type_document, class: 'form-control', required: true, placeholder: 'Tipo Documento' %>
+                                </div>
+                              </div>
+                              <div class="col-md-5">   
+                                <div class="form-group">
+                                  <%= f.text_field :medical_record, class: 'form-control', required: true, placeholder: 'Registro Medico' %>
+                                </div>
+                              </div>
+                            </div>
 
-    <div class="row">
-      <div class="col-md-6">   
-        <div class="form-group">
-          <%= f.text_field :email, class: 'form-control', required: true, placeholder: 'Email' %>
-        </div>
-      </div>
-      <div class="col-md-6">   
-        <div class="form-group">
-          <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-control'  %>
-        </div>
-      </div>
-    </div>
+                            <div class="row">
+                              <div class="col-md-5">   
+                                <div class="form-group">
+                                  <%= f.text_field :email, class: 'form-control', required: true, placeholder: 'Email' %>
+                                </div>
+                              </div>
+                              <div class="col-md-5">   
+                                <div class="form-group">
+                                  <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-control'  %>
+                                </div>
+                              </div>
+                            </div>
 
+                            <div class="row">
+                              <div class="col-md-5">   
+                              <div class="form-group">
+                                <%= f.password_field :password, class: 'form-control', id: 'password1', placeholder: 'Contraseña' %>
+                              </div>
+                              <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Minimo 8 Caracteres<br>
+                              <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Una letra mayuscula
+                              <span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Una letra minuscula<br>
+                              <span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Un Numero
+                              </div>
 
-    <div class="row">
-      <div class="col-md-6">   
-      <div class="form-group">
-        <%= f.password_field :password, class: 'form-control', id: 'password1', placeholder: 'Contraseña' %>
-      </div>
-      <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Minimo 8 Caracteres<br>
-      <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Una letra mayuscula
-      <span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Una letra minuscula<br>
-      <span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Un Numero
-      </div>
-
-      <div class="form-group">
-        <div class="col-md-6">   
-        <%= f.password_field :password_confirmation, class: 'form-control', id: 'password2', placeholder: 'Confirma tu Contraseña' %>
-      </div>
-      <span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Las contraseñas concuerdan
-      </div>
-</div>
-
-
-
-<br/>
-            <%= f.submit 'Enviar!', class: 'btn btn-info btn-block login' %>
-
-
-      </div>
-    </div>
-  </div>
-  <% end %>
-               
-
-
-
-
-
-
+                              <div class="form-group">
+                                <div class="col-md-5">   
+                                <%= f.password_field :password_confirmation, class: 'form-control', id: 'password2', placeholder: 'Confirma tu Contraseña' %>
+                              </div><br/><br/>
+                              <span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Las contraseñas concuerdan
+                              </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                              <div class="col-md-5"> 
+                              <%= f.submit 'Enviar!', class: 'btn btn-info btn-block login' %>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+              <% end %>
             </div>                     
         </div>  
     </div>

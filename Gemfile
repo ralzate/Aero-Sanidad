@@ -57,6 +57,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem "thin"
 
 gem 'garlicjs-rails'
 gem 'localstorageshim-rails'
@@ -69,7 +70,6 @@ gem 'random_data'
 gem 'filterrific'
 gem 'bootstrap-datepicker-rails'
 gem 'chardinjs-rails'
-gem "date_time_attribute"
 
 
 
@@ -115,7 +115,7 @@ gem 'mailboxer'
 gem 'pry-rails'
 # https://github.com/charliesome/better_errors
 gem 'better_errors'
-gem 'ransack'
+gem 'ransack', github: 'ernie/ransack'
 # https://github.com/ryanb/populator
 gem 'populator'
 # https://github.com/mdedetrich/jasny-bootstrap-extension-rails

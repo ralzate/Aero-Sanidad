@@ -15,6 +15,8 @@ class EpsesController < ApplicationController
   # GET /epses/new
   def new
     @eps = Eps.new
+    @arl = Arl.new
+    @country = Country.new
   end
 
   # GET /epses/1/edit
@@ -28,7 +30,7 @@ class EpsesController < ApplicationController
 
     respond_to do |format|
       if @eps.save
-        format.html { redirect_to @eps, notice: 'Eps was successfully created.' }
+        format.html { redirect_to new_arl_path, notice: 'Eps was successfully created.' }
         format.json { render :show, status: :created, location: @eps }
       else
         format.html { render :new }

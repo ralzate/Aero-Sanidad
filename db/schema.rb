@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927205136) do
+ActiveRecord::Schema.define(version: 20151002202213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,30 @@ ActiveRecord::Schema.define(version: 20150927205136) do
   end
 
   add_index "cities", ["department_id"], name: "index_cities_on_department_id", using: :btree
+
+  create_table "clinic_histories", force: :cascade do |t|
+    t.string   "city"
+    t.string   "department"
+    t.integer  "user_id"
+    t.string   "cove"
+    t.string   "mobiel_service"
+    t.integer  "airport"
+    t.integer  "type_service"
+    t.integer  "patient_id"
+    t.string   "origin"
+    t.string   "destination"
+    t.string   "company"
+    t.string   "accompanist_name"
+    t.integer  "relationship"
+    t.string   "phone"
+    t.text     "reason_for_consultation"
+    t.text     "current_illness"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "clinic_histories", ["patient_id"], name: "index_clinic_histories_on_patient_id", using: :btree
+  add_index "clinic_histories", ["user_id"], name: "index_clinic_histories_on_user_id", using: :btree
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
@@ -215,6 +239,8 @@ ActiveRecord::Schema.define(version: 20150927205136) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", using: :btree
 
   add_foreign_key "cities", "departments"
+  add_foreign_key "clinic_histories", "patients"
+  add_foreign_key "clinic_histories", "users"
   add_foreign_key "departments", "countries"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"

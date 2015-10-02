@@ -1,82 +1,137 @@
-<%- model_class = Patient -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:first_name) %></th>
-      <th><%= model_class.human_attribute_name(:second_name) %></th>
-      <th><%= model_class.human_attribute_name(:first_surname) %></th>
-      <th><%= model_class.human_attribute_name(:second_surname) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:type_document) %></th>
-      <th><%= model_class.human_attribute_name(:document) %></th>
-      <th><%= model_class.human_attribute_name(:days_age) %></th>
-      <th><%= model_class.human_attribute_name(:months_age) %></th>
-      <th><%= model_class.human_attribute_name(:years_age) %></th>
-      <th><%= model_class.human_attribute_name(:birthdate) %></th>
-      <th><%= model_class.human_attribute_name(:gender) %></th>
-      <th><%= model_class.human_attribute_name(:profession) %></th>
-      <th><%= model_class.human_attribute_name(:blood_type) %></th>
-      <th><%= model_class.human_attribute_name(:nacionality) %></th>
-      <th><%= model_class.human_attribute_name(:eps_id) %></th>
-      <th><%= model_class.human_attribute_name(:arl_id) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:condition) %></th>
-      <th><%= model_class.human_attribute_name(:accompanist_name) %></th>
-      <th><%= model_class.human_attribute_name(:relationship) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:city_id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @patients.each do |patient| %>
-      <tr>
-        <td><%= link_to patient.id, patient_path(patient) %></td>
-        <td><%= patient.first_name %></td>
-        <td><%= patient.second_name %></td>
-        <td><%= patient.first_surname %></td>
-        <td><%= patient.second_surname %></td>
-        <td><%= patient.email %></td>
-        <td><%= patient.type_document %></td>
-        <td><%= patient.document %></td>
-        <td><%= patient.days_age %></td>
-        <td><%= patient.months_age %></td>
-        <td><%= patient.years_age %></td>
-        <td><%= patient.birthdate %></td>
-        <td><%= patient.gender %></td>
-        <td><%= patient.profession %></td>
-        <td><%= patient.blood_type %></td>
-        <td><%= patient.nacionality %></td>
-        <td><%= patient.eps_id %></td>
-        <td><%= patient.arl_id %></td>
-        <td><%= patient.address %></td>
-        <td><%= patient.condition %></td>
-        <td><%= patient.accompanist_name %></td>
-        <td><%= patient.relationship %></td>
-        <td><%= patient.phone %></td>
-        <td><%= patient.city_id %></td>
-        <td><%= patient.user_id %></td>
-        <td><%=l patient.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_patient_path(patient), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      patient_path(patient),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<style type="text/css">
+  .avatar-pasciente:hover{
+    background-color: transparent !important;
+  }
+</style>
+    <div class="container-fluid" style="background-color:#e8e8e8">
+        <div class="container-pad" id="property-listings">
+            
+            <div class="row">
+              <div class="col-md-12">
+                <h1>Listado Pascientes</h1>
+                <p>Listado de los pascientes que se encuentran registrados</p>
+              </div>
+            </div>
+            <% @patients.each do |patient| %>
+            <div class="row">
+                <div class="col-sm-12"> 
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_patient_path,
-            :class => 'btn btn-primary' %>
+                    <!-- Begin Listing: 609 W GRAVERS LN-->
+                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                        <div class="media">
+                            <a class="pull-left avatar-pasciente" href="#" target="_parent" >
+                            <img alt="image"  src="http://s.ytimg.com/yts/img/avatar_720-vflYJnzBZ.png" style="width:100px;height:100px; border-radius: 55px;"></a>
+
+                            <div class="clearfix visible-sm"></div>
+
+                            <div class="media-body fnt-smaller">
+                                <a href="#" target="_parent"></a>
+
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent">Identificacion :<%= patient.document %></a></h4>
+
+
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li><%= patient.first_name %> <%= patient.second_name %></li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li><%= patient.first_surname %> <%= patient.second_surname %></li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li><%= patient.email %></li>
+                                </ul>
+
+                                <p class="hidden-xs">Genero: <%= patient.gender %>, Tipo de sangre: <%= patient.blood_type %>, Nacionalidad <%= patient.nacionality %></p>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                  <%= link_to 'Nuevo Pasciente', new_patient_path %>
+                </div>
+            </div><!-- End row -->
+            <% end %>
+        </div><!-- End container -->
+    </div>
+
+<style type="text/css">
+  /**** BASE ****/
+body {
+    color: #888;   
+}
+a {
+    color: #03a1d1;
+    text-decoration: none!important;
+}
+
+/**** LAYOUT ****/
+.list-inline>li {
+    padding: 0 10px 0 0;
+}
+.container-pad {
+    padding: 30px 15px;
+}
+
+
+/**** MODULE ****/
+.bgc-fff {
+    background-color: #fff!important;
+}
+.box-shad {
+    -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+.brdr {
+    border: 1px solid #ededed;
+}
+
+/* Font changes */
+.fnt-smaller {
+    font-size: .9em;
+}
+.fnt-lighter {
+    color: #bbb;
+}
+
+/* Padding - Margins */
+.pad-10 {
+    padding: 10px!important;
+}
+.mrg-0 {
+    margin: 0!important;
+}
+.btm-mrg-10 {
+    margin-bottom: 10px!important;
+}
+.btm-mrg-20 {
+    margin-bottom: 20px!important;
+}
+
+/* Color  */
+.clr-535353 {
+    color: #535353;
+}
+
+
+
+
+/**** MEDIA QUERIES ****/
+@media only screen and (max-width: 991px) {
+    #property-listings .property-listing {
+        padding: 5px!important;
+    }
+    #property-listings .property-listing a {
+        margin: 0;
+    }
+    #property-listings .property-listing .media-body {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #property-listings .property-listing img {
+        max-width: 180px;
+    }
+}
+
+</style>

@@ -1,3 +1,14 @@
+<button onclick="goForward()">Arl</button>
+
+<script>
+function goForward() {
+    window.history.forward();
+}
+</script>
+
+
+
+
 <%= form_for @eps, :html => { :class => "form-horizontal eps" } do |f| %>
 
     <% if @eps.errors.any? %>
@@ -20,7 +31,6 @@
     <div class="controls">
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
-    <%= error_span(@eps[:name]) %>
   </div>
 
 

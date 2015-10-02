@@ -9,17 +9,20 @@
 <h1>Bienvenido a AeroSanidad! </h1>
 
 
-	<div class="row">
+    <div class="row">
         <div class="col-lg-12">
-			<%= form_tag request.path, :method => 'get' do %>
-			<%= text_field_tag :search, params[:search], :placeholder => "Busca pasciente Pasciente", :class => 'form-control' %>
 
-			<% end %>
+<form>
+ <input name="q" <%= @q %> >
+ <button type="submit">Buscar</button>
+</form>
+
+
         </div>
-	</div>
+    </div>
 
     <% @patients.each do |patient| %>
-	<div class="row">
+    <div class="row">
         <div class="searchable-container">
             <div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
                <div class="info-block block-info clearfix">
@@ -29,7 +32,7 @@
                     <h3>Nombres: <%= patient.first_name %> <%= patient.second_name %></h3>
                     <h4>Apellidos: <%= patient.first_name %> <%= patient.second_name %></h4>
                     <h5>Documento: <%= patient.document %></h5>
-                    <span>Telefono: <%= patient.phone %></span>
+                    <span>Correo: <%= patient.email %></span>
                     <span>Condition: <%= patient.condition %></span>
                     <span>Eps: <%= patient.eps %></span>
                     <span>Arl: <%= patient.arl %></span>
@@ -37,23 +40,20 @@
             </div>
 
         </div>
-	</div>
-	<% end %>
+    </div>
+    <% end %>
 </div>
 
 
 <br />
 <br />
 <div align="center">
-  <%= will_paginate @patients, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
-  &raquo;' %>
 </div>
 <div align="center">
-  Total Pascientes : <%= @patients.total_entries %>
 </div>
 
 <style type="text/css">
-	.glyphicon-lg
+    .glyphicon-lg
 {
     font-size:4em;
 }
@@ -76,6 +76,27 @@
 }
 </style>
 
-<script type="text/javascript">
-	
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

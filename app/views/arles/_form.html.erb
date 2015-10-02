@@ -1,3 +1,14 @@
+<button><a href="javascript:history.back()">Eps</a> </button>
+
+
+<script>
+function goBack() {
+    window.history.go(+1);
+}
+</script>
+<button onclick="goBack()">Paises</button>
+
+
 <%= form_for @arl, :html => { :class => "form-horizontal arl" } do |f| %>
 
     <% if @arl.errors.any? %>
@@ -20,9 +31,7 @@
     <div class="controls">
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
-    <%= error_span(@arl[:name]) %>
   </div>
-<%= select_tag :state, options_for_select(us_states) %>
 
 
   <%= f.submit nil, :class => 'btn btn-primary' %>

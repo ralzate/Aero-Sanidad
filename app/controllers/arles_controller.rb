@@ -28,7 +28,7 @@ class ArlesController < ApplicationController
 
     respond_to do |format|
       if @arl.save
-        format.html { redirect_to @arl, notice: 'Arl was successfully created.' }
+        format.html { redirect_to new_country_path, notice: 'Arl was successfully created.' }
         format.json { render :show, status: :created, location: @arl }
       else
         format.html { render :new }
