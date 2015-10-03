@@ -46,11 +46,14 @@
                                 <p class="hidden-xs">Genero: <%= patient.gender %>, Tipo de sangre: <%= patient.blood_type %>, Nacionalidad <%= patient.nacionality %></p>
                             </div>
                         </div>
+
                     </div><!-- End Listing-->
-                  <%= link_to 'Nuevo Pasciente', new_patient_path %>
                 </div>
+
             </div><!-- End row -->
             <% end %>
+                      <%= link_to image_tag('Crud/agregar.png', :size => "28x28"),  new_patient_path, :rel => "tooltip", :title => "Ingresar nuevo Pasciente", :class => "btn btn-link boton-oculto-moviles " %>
+
         </div><!-- End container -->
     </div>
 

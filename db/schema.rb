@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151002202213) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "arles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -29,7 +26,7 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "cities", ["department_id"], name: "index_cities_on_department_id", using: :btree
+  add_index "cities", ["department_id"], name: "index_cities_on_department_id"
 
   create_table "clinic_histories", force: :cascade do |t|
     t.string   "city"
@@ -52,8 +49,8 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.datetime "updated_at",              null: false
   end
 
-  add_index "clinic_histories", ["patient_id"], name: "index_clinic_histories_on_patient_id", using: :btree
-  add_index "clinic_histories", ["user_id"], name: "index_clinic_histories_on_user_id", using: :btree
+  add_index "clinic_histories", ["patient_id"], name: "index_clinic_histories_on_patient_id"
+  add_index "clinic_histories", ["user_id"], name: "index_clinic_histories_on_user_id"
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
@@ -75,7 +72,7 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -84,7 +81,7 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "departments", ["country_id"], name: "index_departments_on_country_id", using: :btree
+  add_index "departments", ["country_id"], name: "index_departments_on_country_id"
 
   create_table "epses", force: :cascade do |t|
     t.string   "name"
@@ -98,8 +95,8 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.integer "conversation_id"
   end
 
-  add_index "mailboxer_conversation_opt_outs", ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id", using: :btree
-  add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type", using: :btree
+  add_index "mailboxer_conversation_opt_outs", ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id"
+  add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type"
 
   create_table "mailboxer_conversations", force: :cascade do |t|
     t.string   "subject",    default: ""
@@ -125,10 +122,10 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.datetime "expires"
   end
 
-  add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id", using: :btree
-  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type", using: :btree
-  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type", using: :btree
-  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type", using: :btree
+  add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
+  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type"
+  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type"
+  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type"
 
   create_table "mailboxer_receipts", force: :cascade do |t|
     t.integer  "receiver_id"
@@ -142,8 +139,8 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.datetime "updated_at",                                 null: false
   end
 
-  add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
-  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
+  add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
+  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
 
   create_table "patients", force: :cascade do |t|
     t.string   "first_name"
@@ -174,10 +171,10 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "patients", ["arl_id"], name: "index_patients_on_arl_id", using: :btree
-  add_index "patients", ["city_id"], name: "index_patients_on_city_id", using: :btree
-  add_index "patients", ["eps_id"], name: "index_patients_on_eps_id", using: :btree
-  add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
+  add_index "patients", ["arl_id"], name: "index_patients_on_arl_id"
+  add_index "patients", ["city_id"], name: "index_patients_on_city_id"
+  add_index "patients", ["eps_id"], name: "index_patients_on_eps_id"
+  add_index "patients", ["user_id"], name: "index_patients_on_user_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -189,7 +186,7 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
+  add_index "products", ["user_id"], name: "index_products_on_user_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -231,23 +228,11 @@ ActiveRecord::Schema.define(version: 20151002202213) do
     t.string   "last_login_from_ip_address"
   end
 
-  add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at", using: :btree
-  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", using: :btree
+  add_index "users", ["activation_token"], name: "index_users_on_activation_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
+  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token"
 
-  add_foreign_key "cities", "departments"
-  add_foreign_key "clinic_histories", "patients"
-  add_foreign_key "clinic_histories", "users"
-  add_foreign_key "departments", "countries"
-  add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
-  add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
-  add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
-  add_foreign_key "patients", "arles"
-  add_foreign_key "patients", "cities"
-  add_foreign_key "patients", "epses"
-  add_foreign_key "patients", "users"
-  add_foreign_key "products", "users"
 end
